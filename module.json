@@ -1,0 +1,28 @@
+{
+    "name": "redsky-5e",
+    "title": "Redsky",
+    "description": "Customizes the base FoundryVTT DnD 5e implementation to work with Redsky content.",
+    "authors": [
+      {
+        "name": "Brandon Gurwitz"
+      }
+    ],
+    "version": "0.1",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11"
+    },
+    "scripts": [
+        "scripts/redsky-core.js"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        }
+    ],
+    "styles": [
+        "styles/redsky.css"
+    ]
+  }
