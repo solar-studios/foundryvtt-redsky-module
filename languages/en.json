@@ -6,5 +6,11 @@
     "REDSKY.SkillPol": "Politics",
     "REDSKY.SenseLowLightVision": "Low Light Vision",
     "REDSKY.SheetClassCharacter": "Redsky Character Sheet",
-    "REDSKY.Race": "Species"
+    "REDSKY.Race": "Species",
+    "REDSKY.ElementsFire": "Fire",
+    "REDSKY.ElementsWater": "Water",
+    "REDSKY.ElementsAir": "Air",
+    "REDSKY.ElementsEarth": "Earth",
+    "REDSKY.ElementsVoid": "Void",
+    "REDSKY.ElementsAether": "Aether"
 }
