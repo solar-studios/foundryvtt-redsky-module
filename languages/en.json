@@ -6,5 +6,11 @@
     "REDSKY.SkillPol": "Politics",
     "REDSKY.SenseLowLightVision": "Low Light Vision",
     "REDSKY.SheetClassCharacter": "Redsky Character Sheet",
-    "REDSKY.Race": "Species"
+    "REDSKY.Race": "Species",
+    "REDSKY.ArmProt": "Armor Protections",
+    "REDSKY.ArmWeak": "Armor Weaknesses",
+    "DND5E.TraitAPPlural.one": "Armor Protection",
+    "DND5E.TraitAPPlural.other": "Armor Protections",
+    "DND5E.TraitAWPlural.one": "Armor Weakness",
+    "DND5E.TraitAWPlural.other": "Armor Weaknesses"
 }

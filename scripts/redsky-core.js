@@ -1,13 +1,4 @@
 Hooks.once('init', () => {
-    //override _prepareArmorClass while calling original
-    //(function() {
-    //    console.log("overriding prepareArmorClass")
-    //    var proxied = dnd5e.documents.Actor5e._prepareArmorClass;
-    //    dnd5e.documents.Actor5e._prepareArmorClass = function () {
-    //        console.log("Redsky | AC override");
-    //        proxied();
-    //    };
-    //})();
 
     //Arcana removed; Medicine is int; Eldertech, Materials, and Politics added
     CONFIG.DND5E.skills = {
@@ -82,13 +73,37 @@ Hooks.once('init', () => {
     };
     dnd5e.utils.preLocalize("armorClasses", { key: "label" });
 
+    //Add Armor Protection and Weakness
+    CONFIG.DND5E.traits.ap = {
+      label: "REDSKY.ArmProt",
+      configKey: "damageTypes"
+    };
+
+    CONFIG.DND5E.traits.aw = {
+      label: "REDSKY.ArmWeak",
+      configKey: "damageTypes"
+    };
+
+    dnd5e.dataModels.actor.config.character = CharacterDataRedsky;
+
+    //Register actor class for ArmorClass overrides
     CONFIG.Actor.documentClass = ActorRedsky;
 
+    //Register updated Redsky character sheet
     Actors.registerSheet("dnd5e", ActorSheetRedskyCharacter, {
         types: ["character"],
         makeDefault: true,
         label: "REDSKY.SheetClassCharacter"
       });
+
+    loadTemplates(['modules/redsky-5e/templates/redsky-actor-traits.hbs']);
+    
+    //Set XP and level thresholds
+    CONFIG.DND5E.CHARACTER_EXP_LEVELS = [
+      0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000
+    ];
+
+    CONFIG.DND5E.maxLevel = 10;
 });
 
 class ActorRedsky extends dnd5e.documents.Actor5e {
@@ -97,6 +112,21 @@ class ActorRedsky extends dnd5e.documents.Actor5e {
         const ac = this.system.attributes.ac;
         ac.touch = 10 + ac.shield + ac.bonus + ac.cover;
     }
+}
+
+class CharacterDataRedsky extends dnd5e.dataModels.actor.CharacterData {
+  static defineSchema() {
+    return this.mergeSchema(super.defineSchema(), {
+      traits: new foundry.data.fields.SchemaField({
+        ...dnd5e.dataModels.actor.TraitsFields.common,
+        ...dnd5e.dataModels.actor.TraitsFields.creature,
+        weaponProf: dnd5e.dataModels.actor.TraitsFields.makeSimpleTrait({label: "DND5E.TraitWeaponProf"}),
+        armorProf: dnd5e.dataModels.actor.TraitsFields.makeSimpleTrait({label: "DND5E.TraitArmorProf"}),
+        ap: dnd5e.dataModels.actor.TraitsFields.makeDamageTrait({label: "REDSKY.ArmProt"}),
+        aw: dnd5e.dataModels.actor.TraitsFields.makeDamageTrait({label: "REDSKY.ArmWeak"})
+      }, {label: "DND5E.Traits"})
+    });
+  }
 }
 
 class ActorSheetRedskyCharacter extends dnd5e.applications.actor.ActorSheet5eCharacter {
