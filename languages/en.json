@@ -12,5 +12,11 @@
     "DND5E.TraitAPPlural.one": "Armor Protection",
     "DND5E.TraitAPPlural.other": "Armor Protections",
     "DND5E.TraitAWPlural.one": "Armor Weakness",
-    "DND5E.TraitAWPlural.other": "Armor Weaknesses"
+    "DND5E.TraitAWPlural.other": "Armor Weaknesses",
+    "REDSKY.ElementsFire": "Fire",
+    "REDSKY.ElementsWater": "Water",
+    "REDSKY.ElementsAir": "Air",
+    "REDSKY.ElementsEarth": "Earth",
+    "REDSKY.ElementsVoid": "Void",
+    "REDSKY.ElementsAether": "Aether"
 }
